@@ -10,7 +10,12 @@ from typing import Optional, List, Dict, Any
 
 # Default paths
 BASE_DIR = Path(__file__).resolve().parent
-DEFAULT_DB_PATH = BASE_DIR / "instance" / "nptel_hub.db"
+DEFAULT_DB_PATH = Path(
+    os.environ.get(
+        "NPTEL_DATABASE_PATH",
+        str(BASE_DIR / "instance" / "nptel_hub.db")
+    )
+)
 DEFAULT_SCHEMA_PATH = BASE_DIR / "schema.sql"
 
 

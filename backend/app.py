@@ -31,9 +31,18 @@ app = Flask(
 
 def get_db():
     """
-    Returns database connection. Supports app.config['DATABASE_PATH'] for test isolation.
+    Use PostgreSQL on deployment when DATABASE_URL is configured.
+    Keep SQLite as the default for local development and isolated tests.
     """
+    import os
+
+    database_url = os.environ.get("DATABASE_URL")
     db_path = app.config.get("DATABASE_PATH")
+
+    if database_url and not db_path:
+        from postgres.database import get_postgres_connection
+        return get_postgres_connection(database_url)
+
     return get_db_connection(db_path)
 
 

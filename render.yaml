@@ -1,0 +1,7 @@
+﻿services:
+  - type: web
+    name: nptel-practice-hub
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: gunicorn --chdir backend --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /api/health

@@ -19,3 +19,10 @@ venv/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local deployment preparation files
+/deployment-work/
+
+# Private course data and audit files
+backend/extracted_questions_audit.json
+backend/course_seed.sql

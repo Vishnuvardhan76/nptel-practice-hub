@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NPTEL Practice Hub - Conservation Geography weekly assignments and practice tests.">
+  <meta name="theme-color" content="#0B0F19">
+  <title>NPTEL Practice Hub — Conservation Geography</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-group">
+        <span class="brand-badge">NPTEL</span>
+        <h1 class="brand-title">Practice Hub</h1>
+      </div>
+      <div class="api-status" id="api-status-badge">
+        <span class="status-dot" id="status-dot"></span>
+        <span id="status-text">Checking API...</span>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Dashboard View -->
+      <div id="dashboard-view">
+        <!-- Course Hero Card -->
+        <section class="course-card" aria-labelledby="course-heading">
+          <div class="course-card-top">
+            <div>
+              <span class="course-tag">Active Course</span>
+              <h2 id="course-heading" class="course-title">Conservation Geography</h2>
+            </div>
+            <div class="course-meta-pills">
+              <span class="meta-pill"><strong>12</strong> Weeks</span>
+              <span class="meta-pill" id="total-questions-count"><strong>120</strong> Questions</span>
+              <span class="meta-pill">Verified Source PDFs</span>
+            </div>
+          </div>
+          <p class="course-description">
+            A dedicated practice and revision environment for NPTEL's 12-week Conservation Geography course.
+            Featuring verified question solutions extracted directly from the original course assignments.
+          </p>
+        </section>
+
+        <!-- Modes Section -->
+        <section class="modes-section" aria-labelledby="modes-heading" style="margin-top: 2.5rem;">
+          <div>
+            <h3 id="modes-heading" class="section-title">Study & Practice Modes</h3>
+            <p class="section-subtitle">Dedicated interfaces designed for systematic learning and exam preparation.</p>
+          </div>
+
+          <div class="modes-grid">
+            <!-- Learn Mode Card (Active & Clickable) -->
+            <article class="mode-card mode-card-active" id="learn-mode-card" tabindex="0" role="button" aria-label="Open Learn Mode">
+              <div class="mode-card-header">
+                <div class="mode-title-group">
+                  <h4 class="mode-title">Learn Mode</h4>
+                  <span class="mode-badge mode-badge-active">Ready to Study</span>
+                </div>
+                <span class="mode-action-arrow">&rarr;</span>
+              </div>
+              <p class="mode-desc">
+                Study questions one at a time by week. Displays verified solutions, preserves original question &amp; option order, and provides untimed review.
+              </p>
+              <ul class="mode-features">
+                <li>Week-by-week navigation (Weeks 1–12)</li>
+                <li>Verified correct answer highlighting</li>
+                <li>Zero fabricated explanations</li>
+              </ul>
+              <div class="mode-card-footer">
+                <button type="button" class="btn-mode-primary" id="btn-open-learn">Start Learning &rarr;</button>
+              </div>
+            </article>
+
+            <!-- Practice Mode Card (Active & Clickable) -->
+            <article class="mode-card mode-card-active" id="practice-mode-card" tabindex="0" role="button" aria-label="Open Practice Mode">
+              <div class="mode-card-header">
+                <div class="mode-title-group">
+                  <h4 class="mode-title">Practice Mode</h4>
+                  <span class="mode-badge mode-badge-active">Ready to Test</span>
+                </div>
+                <span class="mode-action-arrow">&rarr;</span>
+              </div>
+              <p class="mode-desc">
+                Exam simulator supporting Complete, Quick, and Custom question counts with balanced week distribution and independent question/option shuffling.
+              </p>
+              <ul class="mode-features">
+                <li>Client-blind answer keys (server-side graded)</li>
+                <li>Active test refresh recovery</li>
+                <li>Question status navigator &amp; full review</li>
+              </ul>
+              <div class="mode-card-footer">
+                <button type="button" class="btn-mode-primary" id="btn-open-practice">Configure Test &rarr;</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Course Weeks Directory Section -->
+        <section class="weeks-section" aria-labelledby="weeks-heading" style="margin-top: 2.5rem;">
+          <div>
+            <h3 id="weeks-heading" class="section-title">Assignment Weeks Directory</h3>
+            <p class="section-subtitle">Weekly assignment questions verified and populated from original NPTEL solutions. Click any week to study in Learn Mode.</p>
+          </div>
+
+          <!-- Dynamic Weeks Container -->
+          <div id="weeks-container">
+            <div class="state-box">
+              <p>Initializing connection to backend API...</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Learn Mode View -->
+      <section id="learn-mode-view" class="learn-mode-container" style="display: none;" aria-label="Learn Mode Study Interface">
+        <!-- Top Navigation / Return to Dashboard -->
+        <div class="learn-header-bar">
+          <button type="button" class="btn-back" id="btn-back-dashboard" aria-label="Return to Dashboard">
+            <span class="btn-icon">&larr;</span> Back to Dashboard
+          </button>
+          <div class="learn-header-title-group">
+            <span class="learn-mode-tag">Learn Mode</span>
+            <span class="learn-header-subtitle">Untimed Study &bull; Verified Solutions</span>
+          </div>
+        </div>
+
+        <!-- Week Selector & Week Metadata Card -->
+        <div class="learn-controls-card">
+          <div class="learn-week-selector-wrapper">
+            <label for="learn-week-select" class="selector-label">Assignment Week:</label>
+            <div class="select-container">
+              <select id="learn-week-select" class="learn-week-select" aria-label="Select Assignment Week">
+                <option value="1">Week 1: Introduction to Conservation Geography</option>
+                <option value="2">Week 2: Week 2 Assignment</option>
+                <option value="3">Week 3: Week 3 Assignment</option>
+                <option value="4">Week 4: Week 4 Assignment</option>
+                <option value="5">Week 5: Week 5 Assignment</option>
+                <option value="6">Week 6: Week 6 Assignment</option>
+                <option value="7">Week 7: Week 7 Assignment</option>
+                <option value="8">Week 8: Week 8 Assignment</option>
+                <option value="9">Week 9: Week 9 Assignment</option>
+                <option value="10">Week 10: Week 10 Assignment</option>
+                <option value="11">Week 11: Week 11 Assignment</option>
+                <option value="12">Week 12: Week 12 Assignment</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="learn-week-details">
+            <h3 id="learn-week-title" class="learn-week-title">Loading week details...</h3>
+            <div class="learn-meta-pills">
+              <span class="meta-pill" id="learn-week-question-count"><strong>10</strong> Questions</span>
+              <span class="meta-pill verified-pill">&#10003; Verified Solutions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Content Area -->
+        <div id="learn-content-container" class="learn-content-area" aria-live="polite">
+          <div class="state-box">
+            <p>Loading questions...</p>
+          </div>
+        </div>
+
+        <!-- Question Navigation Bar -->
+        <div class="learn-nav-bar" id="learn-nav-bar">
+          <button type="button" class="btn-nav btn-nav-secondary" id="btn-prev-question" disabled aria-label="Previous Question">
+            &larr; Previous Question
+          </button>
+          <div class="learn-nav-middle">
+            <span id="learn-question-counter" class="question-counter-badge">Question 1 of 10</span>
+            <span class="shortcut-hint">Tip: Use &larr; / &rarr; keys to navigate</span>
+          </div>
+          <button type="button" class="btn-nav btn-nav-primary" id="btn-next-question" aria-label="Next Question">
+            Next Question &rarr;
+          </button>
+        </div>
+      </section>
+
+      <!-- Practice Mode View -->
+      <section id="practice-mode-view" class="practice-mode-container" style="display: none;" aria-label="Practice Mode Test Environment">
+        <!-- Top Navigation / Return to Dashboard -->
+        <div class="learn-header-bar">
+          <button type="button" class="btn-back" id="btn-practice-back-dashboard" aria-label="Return to Dashboard">
+            <span class="btn-icon">&larr;</span> Back to Dashboard
+          </button>
+          <div class="learn-header-title-group">
+            <span class="practice-mode-tag">Practice Mode</span>
+            <span class="learn-header-subtitle">Exam Simulator &bull; Server-Side Graded</span>
+          </div>
+        </div>
+
+        <!-- Resume Active Session Banner (if exists) -->
+        <div id="practice-resume-banner" class="resume-banner" style="display: none;">
+          <div class="resume-banner-content">
+            <span class="resume-icon">⚡</span>
+            <div>
+              <strong>Active Practice Test In Progress</strong>
+              <p id="resume-banner-text">You have an unfinished practice test.</p>
+            </div>
+          </div>
+          <div class="resume-banner-actions">
+            <button type="button" class="btn-resume" id="btn-resume-active-session">Resume Test &rarr;</button>
+            <button type="button" class="btn-discard" id="btn-discard-active-session">Discard</button>
+          </div>
+        </div>
+
+        <!-- 1. Practice Setup Card -->
+        <div id="practice-setup-card" class="practice-card">
+          <div class="practice-card-head">
+            <h3 class="practice-card-title">Configure Practice Test</h3>
+            <p class="practice-card-subtitle">Select assignment weeks and your preferred test length to generate an exam simulation.</p>
+          </div>
+
+          <!-- Week Selection Section -->
+          <div class="practice-config-section">
+            <div class="config-section-header">
+              <div class="section-title-group">
+                <h4 class="config-section-title">1. Select Assignment Weeks</h4>
+                <span class="config-count-badge" id="practice-selected-weeks-count">0 of 12 Weeks Selected</span>
+              </div>
+              <div class="select-all-group">
+                <button type="button" class="btn-text-action" id="btn-select-all-weeks">Select All</button>
+                <span class="divider">&bull;</span>
+                <button type="button" class="btn-text-action" id="btn-deselect-all-weeks">Deselect All</button>
+              </div>
+            </div>
+
+            <!-- Weeks Checkbox Grid -->
+            <div class="practice-weeks-grid" id="practice-weeks-checkbox-grid">
+              <!-- Checkboxes for Weeks 1 to 12 rendered dynamically -->
+            </div>
+            <div id="practice-week-error" class="validation-msg error-msg" style="display: none;">
+              Please select at least one week to proceed.
+            </div>
+          </div>
+
+          <!-- Test Type & Question Count Section -->
+          <div class="practice-config-section">
+            <h4 class="config-section-title">2. Choose Test Type &amp; Question Count</h4>
+
+            <div class="test-types-grid">
+              <!-- Complete Test -->
+              <label class="test-type-option" for="test-type-complete">
+                <input type="radio" name="practice_test_type" id="test-type-complete" value="complete" checked>
+                <div class="test-type-card-content">
+                  <div class="test-type-head">
+                    <span class="test-type-name">Complete Test</span>
+                    <span class="test-type-badge">Full Coverage</span>
+                  </div>
+                  <p class="test-type-desc">Includes all verified questions from selected weeks without duplicates.</p>
+                  <span class="test-type-calc" id="complete-test-count-hint">0 Questions</span>
+                </div>
+              </label>
+
+              <!-- Quick Test -->
+              <label class="test-type-option" for="test-type-quick">
+                <input type="radio" name="practice_test_type" id="test-type-quick" value="quick">
+                <div class="test-type-card-content">
+                  <div class="test-type-head">
+                    <span class="test-type-name">Quick Test</span>
+                    <span class="test-type-badge">Evenly Distributed</span>
+                  </div>
+                  <p class="test-type-desc">Distributes questions as evenly as possible across selected weeks.</p>
+                  <div class="quick-counts-selector" id="quick-counts-container">
+                    <button type="button" class="btn-count-pill active" data-count="10">10 Questions</button>
+                    <button type="button" class="btn-count-pill" data-count="20">20 Questions</button>
+                    <button type="button" class="btn-count-pill" data-count="30">30 Questions</button>
+                  </div>
+                  <div id="quick-test-note" class="type-note"></div>
+                </div>
+              </label>
+
+              <!-- Custom Test -->
+              <label class="test-type-option" for="test-type-custom">
+                <input type="radio" name="practice_test_type" id="test-type-custom" value="custom">
+                <div class="test-type-card-content">
+                  <div class="test-type-head">
+                    <span class="test-type-name">Custom Test</span>
+                    <span class="test-type-badge">Custom Count</span>
+                  </div>
+                  <p class="test-type-desc">Specify any positive question count up to the available total.</p>
+                  <div class="custom-input-group">
+                    <label for="practice-custom-count" class="sr-only">Question Count</label>
+                    <input type="number" id="practice-custom-count" class="input-custom-count" min="1" max="120" value="5">
+                    <span class="custom-max-label" id="custom-max-hint">Max: 0</span>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div id="practice-type-error" class="validation-msg error-msg" style="display: none;"></div>
+          </div>
+
+          <!-- Launch Button -->
+          <div class="practice-launch-bar">
+            <button type="button" class="btn-start-test" id="btn-start-practice-test">
+              Start Practice Test &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Active Test View -->
+        <div id="practice-test-card" class="practice-card" style="display: none;">
+          <!-- Active Test Header -->
+          <div class="practice-test-header">
+            <div class="test-meta-info">
+              <span class="test-meta-badge" id="active-test-type-badge">Practice Test</span>
+              <span class="test-meta-weeks" id="active-test-weeks-badge">Weeks: 1</span>
+            </div>
+            <div class="test-status-right">
+              <span class="autosave-status-badge" id="practice-autosave-status" aria-live="polite" style="display: none;"></span>
+              <span class="question-counter-badge" id="active-question-counter">Question 1 of 10</span>
+              <span class="question-marks-badge" id="active-question-marks">1.0 Mark</span>
+            </div>
+          </div>
+
+          <!-- Question Navigator Strip -->
+          <div class="question-navigator-section">
+            <div class="navigator-header">
+              <span class="nav-heading">Question Navigator</span>
+              <div class="nav-legend">
+                <span class="legend-item"><span class="legend-dot answered"></span> Answered</span>
+                <span class="legend-item"><span class="legend-dot unanswered"></span> Unanswered</span>
+                <span class="legend-item"><span class="legend-dot current"></span> Current</span>
+              </div>
+            </div>
+            <div class="navigator-grid" id="practice-navigator-grid">
+              <!-- Question pills 1..N -->
+            </div>
+          </div>
+
+          <!-- Current Question Display Area -->
+          <div class="question-display-area">
+            <div class="question-text-box">
+              <p class="question-text" id="active-practice-question-text">Loading question...</p>
+            </div>
+
+            <div class="options-container">
+              <div class="options-header-row">
+                <h4 class="options-heading">Select an Answer</h4>
+                <button type="button" class="btn-clear-selection" id="btn-clear-answer" style="display: none;">Clear Choice</button>
+              </div>
+              <div class="options-list" id="active-practice-options-list" role="radiogroup">
+                <!-- 4 selectable options -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Test Navigation Bottom Bar -->
+          <div class="practice-nav-bar">
+            <button type="button" class="btn-nav btn-nav-secondary" id="btn-practice-prev" disabled>
+              &larr; Previous
+            </button>
+            <button type="button" class="btn-nav btn-submit-test" id="btn-practice-submit">
+              Submit Test
+            </button>
+            <button type="button" class="btn-nav btn-nav-primary" id="btn-practice-next">
+              Next &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Results & Review View -->
+        <div id="practice-results-card" class="practice-card" style="display: none;">
+          <!-- Score Summary Banner -->
+          <div class="results-hero">
+            <div class="results-score-group">
+              <span class="results-score-label">Final Score</span>
+              <div class="results-score-display">
+                <span class="score-number" id="results-score-value">0.0</span>
+                <span class="score-total" id="results-total-marks">/ 0.0</span>
+              </div>
+              <div class="results-percentage-badge" id="results-percentage-badge">0.0%</div>
+            </div>
+
+            <div class="results-breakdown-grid">
+              <div class="breakdown-item correct">
+                <span class="breakdown-val" id="results-correct-count">0</span>
+                <span class="breakdown-lbl">&#10003; Correct</span>
+              </div>
+              <div class="breakdown-item incorrect">
+                <span class="breakdown-val" id="results-incorrect-count">0</span>
+                <span class="breakdown-lbl">&#10007; Incorrect</span>
+              </div>
+              <div class="breakdown-item unanswered">
+                <span class="breakdown-val" id="results-unanswered-count">0</span>
+                <span class="breakdown-lbl">&#9675; Unanswered</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mastery & Notice Banner -->
+          <div id="results-mastery-banner" class="mastery-banner"></div>
+
+          <!-- Provisional Scoring Notice -->
+          <div class="provisional-notice">
+            <span class="notice-icon">&#9432;</span>
+            <p><strong>Scoring Notice:</strong> Each question is scored using 1.0 mark as a provisional baseline since original NPTEL assignment PDFs do not specify official marks weights.</p>
+          </div>
+
+          <!-- Results Actions Bar -->
+          <div class="results-actions-bar">
+            <button type="button" class="btn-action-primary" id="btn-retake-test">Retake Test</button>
+            <button type="button" class="btn-action-secondary" id="btn-new-test">New Practice Test</button>
+            <button type="button" class="btn-action-secondary" id="btn-results-to-dashboard">Back to Dashboard</button>
+          </div>
+
+          <!-- Detailed Question-by-Question Review -->
+          <div class="review-section">
+            <h4 class="review-heading">Question-by-Question Answer Review</h4>
+            <div class="review-questions-list" id="review-questions-list">
+              <!-- Rendered review items -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Submit Confirmation Modal -->
+        <div id="practice-confirm-modal" class="modal-backdrop" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <div class="modal-card">
+            <h3 class="modal-title" id="modal-title">Submit Practice Test?</h3>
+            <p class="modal-text" id="modal-summary-text">You are about to complete and grade this test.</p>
+            <div class="modal-unanswered-warning" id="modal-unanswered-warning" style="display: none;">
+              ⚠️ You have <strong id="modal-unanswered-count">0</strong> unanswered question(s). Unanswered questions will receive 0 marks.
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn-modal-cancel" id="btn-cancel-submit">Keep Practicing</button>
+              <button type="button" class="btn-modal-confirm" id="btn-confirm-submit">Confirm &amp; Submit</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>NPTEL Practice Hub &bull; Conservation Geography</p>
+      <p>Conservation Geography Demo</p>
+    </footer>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

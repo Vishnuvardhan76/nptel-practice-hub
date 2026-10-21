@@ -1,0 +1,21 @@
+﻿# Python generated files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets and environment files
+.env
+.env.*
+
+# SQLite databases and database sidecar files
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -221,6 +221,8 @@ def get_weeks():
         }), 200
 
     except Exception:
+        import logging
+        logging.exception("Failed to retrieve week metadata")
         return jsonify({
             "status": "error",
             "message": "Failed to retrieve week metadata."

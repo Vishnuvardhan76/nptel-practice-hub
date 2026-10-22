@@ -199,7 +199,7 @@ def get_weeks():
                    SUM(CASE WHEN q.is_verified = 1 THEN 1 ELSE 0 END) as verified_questions
             FROM weeks w
             LEFT JOIN questions q ON w.week_number = q.week_number
-            GROUP BY w.week_number
+            GROUP BY w.week_number, w.title, w.total_questions
             ORDER BY w.week_number ASC;
         """)
         rows = cursor.fetchall()

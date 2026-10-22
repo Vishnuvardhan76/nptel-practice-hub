@@ -1,5 +1,4 @@
-﻿-- NPTEL Practice Hub PostgreSQL Schema
-
+﻿
 CREATE TABLE IF NOT EXISTS weeks (
     week_number INTEGER PRIMARY KEY,
     title TEXT NOT NULL,

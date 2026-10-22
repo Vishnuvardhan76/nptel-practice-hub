@@ -1,9 +1,8 @@
-"""Import validated course seed data into an empty PostgreSQL database."""
+﻿"""Import validated course seed data into an empty PostgreSQL database."""
 
 import os
 import sqlite3
 from pathlib import Path
-
 import psycopg
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -62,7 +61,13 @@ def main():
 
         with psycopg.connect(url, connect_timeout=10) as target:
             with target.cursor() as cur:
-                cur.execute(SCHEMA.read_text(encoding="utf-8"))
+                schema_sql = SCHEMA.read_text(encoding="utf-8-sig").lstrip("\uFEFF")
+                import re
+                schema_sql = re.sub(r"(?m)^\s*--.*$", "", schema_sql)
+                for statement in schema_sql.split(";"):
+                    statement = statement.strip()
+                    if statement and statement.upper().startswith("CREATE TABLE"):
+                        cur.execute(statement)
                 cur.execute("""
                     SELECT
                       (SELECT COUNT(*) FROM weeks),

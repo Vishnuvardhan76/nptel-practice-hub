@@ -26,3 +26,6 @@ Thumbs.db
 # Private course data and audit files
 backend/extracted_questions_audit.json
 backend/course_seed.sql
+
+# Local SQLite database code backup
+backend/database_sqlite_backup.py

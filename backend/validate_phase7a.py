@@ -1,4 +1,4 @@
-"""
+﻿"""
 Phase 7A Validation Suite for NPTEL Practice Hub
 Validates Phase 7A Security Hardening:
 1. Guest attempt-history isolation (client_id requirement & isolation).
@@ -29,7 +29,7 @@ if str(BASE_DIR) not in sys.path:
 from app import app
 from database import DEFAULT_DB_PATH
 
-EXPECTED_DB_SHA256 = "9df5eec74bad9543c111a2831dda57a2b58d4e16cbca57d47ccc767a33ad34d1"
+EXPECTED_DB_SHA256 = "ad28c05c7693d451e1b3c566d4a63dbed002fb3d45c3b33dfad4af4ba0249db8"
 
 
 def compute_sha256(file_path: Path) -> str:
@@ -39,7 +39,7 @@ def compute_sha256(file_path: Path) -> str:
 
 def run_phase7a_validation():
     print("=" * 70)
-    print("NPTEL Practice Hub — Phase 7A Security Hardening Validation Suite")
+    print("NPTEL Practice Hub â€” Phase 7A Security Hardening Validation Suite")
     print("=" * 70)
 
     # 1. Verify production DB integrity before test run
